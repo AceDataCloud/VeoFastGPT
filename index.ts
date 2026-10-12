@@ -81,7 +81,7 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataVeo',
-    version: '0.2.0',
+    version: '0.2.1',
     name: { en: 'Ace Data Cloud Veo', 'zh-CN': 'Ace Data Cloud Veo 视频' },
     description: {
       en: 'Generate video with Veo through Ace Data Cloud and retrieve the same task.',
