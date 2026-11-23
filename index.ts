@@ -6,6 +6,8 @@ import {
   type SecretSchemaMetaType
 } from '@fastgpt-plugin/sdk-factory';
 import z from 'zod';
+import { referenceInputs } from './src/references.ts';
+import { MODEL_HELP } from './src/model-catalog.ts';
 
 import { submitGeneration, retrieveTask, retrieveTasks } from './src/client.ts';
 import type { TaskResult } from './src/client.ts';
@@ -29,8 +31,9 @@ const outputSchema = z.object({
 
 const generateHandler = createToolHandler({
   inputSchema: z.object({
+    ...referenceInputs,
     prompt: z.string().trim().min(1).max(10000).meta({ title: 'Prompt', isToolParam: true } satisfies InputSchemaMetaType),
-    model: z.string().trim().min(1).max(256).default('veo31-fast').meta({ title: 'Model' } satisfies InputSchemaMetaType),
+    model: z.string().trim().min(1).max(256).default('veo31-fast').meta({ title: 'Model', description: MODEL_HELP } satisfies InputSchemaMetaType),
     aspect_ratio: z.string().trim().min(1).max(256).default('16:9').meta({ title: 'Aspect Ratio' } satisfies InputSchemaMetaType),
   }),
   outputSchema,
@@ -81,13 +84,13 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataVeo',
-    version: '0.2.1',
+    version: '0.2.2',
     name: { en: 'Ace Data Cloud Veo', 'zh-CN': 'Ace Data Cloud Veo 视频' },
     description: {
       en: 'Generate video with Veo through Ace Data Cloud and retrieve the same task.',
       'zh-CN': '通过 Ace Data Cloud Veo 视频生成并查询同一任务。'
     },
-    versionDescription: { en: 'Align API limits and task status handling', 'zh-CN': '对齐 API 限制和任务状态处理' },
+    versionDescription: { en: 'Support reference models and publish the current model catalog', 'zh-CN': '补齐参考模型输入并展示当前模型目录' },
     author: 'Ace Data Cloud',
     repoUrl: 'https://github.com/AceDataCloud/VeoFastGPT',
     tutorialUrl: 'https://github.com/AceDataCloud/VeoFastGPT#quick-start',

@@ -2,6 +2,13 @@
 
 Generate video and retrieve the result in a FastGPT workflow. [简体中文](README_zh_CN.md) · [Current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=veofastgpt_readme_pricing)
 
+## Model and reference inputs
+
+Choose image2video or ingredients2video when supplying reference images. The veo31-fast-ingredients model requires images and supports up to three; the other models support up to two frame images. The existing text2video default is unchanged. Upscaling an existing task is outside this generation tool.
+
+The Model field lists the current published models in its help text and still accepts exact model IDs as free text. Its catalog is generated from the public API contract. A daily workflow proposes a draft source update; it never publishes a package or runs generation. Review and release are separate. Existing tool IDs, text-generation defaults and task lookup behavior are preserved. No paid model execution was performed for this update.
+
+
 ## Quick start
 
 ### 1. Install

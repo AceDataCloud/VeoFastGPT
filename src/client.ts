@@ -1,3 +1,5 @@
+import { referencePayload, type ReferenceInput } from './references.ts';
+
 export type TaskResult = {
   taskId: string;
   traceId: string;
@@ -11,7 +13,7 @@ export type GenerateInput = {
   prompt: string;
   model: string;
   aspect_ratio: string;
-};
+} & ReferenceInput;
 
 const GENERATE_PATH = '/veo/videos';
 const TASK_PATH = '/veo/tasks';
@@ -105,7 +107,7 @@ export async function submitGeneration(input: GenerateInput, apiKey: string): Pr
     prompt: input.prompt,
     model: input.model,
     aspect_ratio: input.aspect_ratio,
-    action: 'text2video',
+    ...referencePayload(input),
     async: true,
   };
   const body = await post(GENERATE_PATH, apiKey, payload);
