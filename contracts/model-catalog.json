@@ -1,0 +1,20 @@
+{
+  "source": {
+    "apiId": "52a0fa83-3c78-4793-b45a-c1a5c869ae46",
+    "path": "/veo/videos"
+  },
+  "catalog": {
+    "models": [
+      "veo3",
+      "veo3-fast",
+      "veo31-fast",
+      "veo31",
+      "veo31-fast-ingredients"
+    ],
+    "actions": [
+      "text2video",
+      "image2video",
+      "ingredients2video"
+    ]
+  }
+}
